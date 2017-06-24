@@ -1,0 +1,61 @@
+@model WebApplication1.Models.Lock
+
+@{
+    ViewData["Title"] = "Approve Request";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="ApproveRequest">
+    <div class="form-horizontal">
+        <h4>Lock</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="input-group">
+                    <input asp-for="name" readonly/>
+                    <label asp-for="name"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="locked" />
+                    <label asp-for="locked"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="request" onclick="return false;"/>
+                    <label asp-for="request"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="alarm" onclick="return false;"/>
+                    <label asp-for="alarm"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,54 @@
+@model IEnumerable<WebApplication1.Models.Lock>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.locked)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.request)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.alarm)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.locked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.request)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.alarm)
+            </td>
+            <td>
+                <a asp-action="MakeRequest" asp-route-id="@item.Id">Make Request</a> |
+                <a asp-action="ApproveRequest" asp-route-id="@item.Id">Approve Request</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
